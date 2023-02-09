@@ -102,4 +102,18 @@ public class Basic {
 		}
 		return S;
 	}
+	
+	// Dao so
+	static long Cau9(int n) {
+		long s = 1;
+		while (n!=0) {
+			s = s*10 + (n%10);
+			n /= 10;
+		}
+		return s;
+	}
+	
+	static boolean checkThuanNghich(int n) {
+		return n == Cau9(n);
+	}
 }
