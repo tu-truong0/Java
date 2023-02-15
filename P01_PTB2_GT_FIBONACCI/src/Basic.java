@@ -1,6 +1,8 @@
 
 public class Basic {
+public static final String lietKeSNT5ChuSo = null;
 
+	// Bai1
 	static void PTB2(float a, float b, float c) {
 		float delta = b*b - 4*a*c;
 		if (delta < 0) {
@@ -14,12 +16,13 @@ public class Basic {
 			float x1 = (float)(-b-Math.sqrt(delta))/(2*a);
 			float x2 = (float)(-b+Math.sqrt(delta))/(2*a);
 			System.out.println("PT co 2 nghiem phan bien");
-			// Dùng String.format 
+			// String.format 
 			String s= String.format("Nghiem cua PT la: x1 = %f, x2 = %f", x1, x2);
 			System.out.println(s);
 		}
 		}
 	
+// Bai2
 	static long GT (int n) {
 		if (n<=1)	{
 			return 1;
@@ -35,6 +38,8 @@ public class Basic {
 			gt *= i;
 		return gt;
 	}
+	
+// Bai3
 	static long DQ_Fi(int n) {
 		if (n==0 || n== 1) return 1;
 		else {
@@ -50,7 +55,7 @@ public class Basic {
 		}
 		return  F;
 	}
-	
+// Bai4
 	static long UCLN(long a, long b) {
 		while (a!=b) {
 			if (a>b)	a -= b;
@@ -66,11 +71,12 @@ public class Basic {
 		else		
 			return DQ_UCLN(a, b-a);
 	}
-	
+// Bai5	
 	static long BCNN(long a, long b) {
 		return a*b/DQ_UCLN(a, b);
 	}
-	// Ham tra ve boolean kiem tra SNT
+
+// Bai6
 	static boolean checkSNT(long x) {
 		if (x <= 1)
 			return false;
@@ -79,8 +85,8 @@ public class Basic {
 				return false;
 		return true;
 	}
-	// Thu tuc liet ke n so nguyen to dau tien
-	static void Cau6(int n) {
+
+	static void lietKeNSNTDauTien(int n) {
 		String s = "";
 		int d = 0; 
 		long number = 2;
@@ -94,7 +100,20 @@ public class Basic {
 		System.out.println(s);
 	}
 	
-	static long Cau8(int n) {
+// Bai7
+	static void lietKeSNT5ChuSo(){
+		String s = ""; int d = 0;
+		for (long i = 10000; i<= 99999; i++)
+			if (checkSNT(i))	{
+				d++;
+				s= s+ i+ " ";
+				if (d%10==0)	s = s+"\n";
+			}
+		System.out.println(s);
+	}
+	
+// Bai8	
+	static long TONG(int n) {
 		int S = 0;
 		while (n != 0) {
 			S = S + (n%10);
@@ -103,8 +122,8 @@ public class Basic {
 		return S;
 	}
 	
-	// Dao so
-	static long Cau9(int n) {
+// Bai9
+	static long daoSo(int n) {
 		long s = 1;
 		while (n!=0) {
 			s = s*10 + (n%10);
@@ -114,6 +133,20 @@ public class Basic {
 	}
 	
 	static boolean checkThuanNghich(int n) {
-		return n == Cau9(n);
+		return n == daoSo(n);
+	}
+
+
+// Bai10
+	static void lietKeSoFiNhoHonNLaSNT(int n) {
+		long F0 = 0, F1 = 1, F = 0;
+		String s = "";
+		for (int i = 2; i <= n && F<n; i++) {
+			F = F0 + F1;
+			F0 = F1;
+			F1 = F;
+			if (checkSNT(F)) s = s + F + " ";
+		}
+		System.out.println(s);
 	}
 }
