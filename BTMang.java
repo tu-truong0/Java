@@ -1,4 +1,3 @@
-package bai1;
 
 import java.util.Scanner;
 
@@ -39,19 +38,60 @@ public class BTMang {
 		}
 		return S;
 	}
+	static float min(float mang[]) {
+		float m = Float.MAX_VALUE;
+		for (int i = 0; i < mang.length; i++)
+			if (m > mang[i])	
+				m = mang[i];
+		return m;
+	}
+	static float max(float mang[]) {
+		float m = Float.MIN_VALUE;
+		for (int i = 0; i < mang.length; i++)
+			if (m < mang[i])	
+				m = mang[i];
+		return m;
+	}
+	static float average(float mang[]) {
+		return TongMang(mang)/mang.length;
+	}
 	public static float[] MinMaxAverage(float mang[]) {
 		float arr[];
 		arr = new float[3];  
-		float min = mang[0], max = mang[0], s = mang[0], d = 1;
-		for (int i = 1; i < mang.length; i++) {
-			if (min>mang[i])	min=mang[i];
-			if (max<mang[i])	max = mang[i];
-			s+=mang[i];
-			d ++;
-		}
-		arr[0] = min; arr[1] = max; arr[2] = s/d;
+		arr[0] = min(mang); 
+		arr[1] = max(mang); 
+		arr[2] = average(mang);
 		return arr;
 	}
+	public static int[][] NhapMaTran(){
+		int soDong, soCot;
+	    Scanner scanner = new Scanner(System.in);
+	         
+	    System.out.println("Nhập vào số dòng của mảng: ");
+	    soDong = scanner.nextInt();
+	    System.out.println("Nhập vào số cột của mảng: ");
+	    soCot = scanner.nextInt();
+	         
+	    int[][] A = new int[soDong][soCot];
+	         
+	    for (int i = 0; i < soDong; i++) {
+	        for (int j = 0; j < soCot; j++) {
+	            System.out.print("Nhập phần tử thứ [" + i + ", " + j + "]: ");
+	            A[i][j] = scanner.nextInt();
+	        }
+	    }
+	    scanner.close();
+	    return A;
+	}
+	
+	public static void XuatMaTran(int [][] mt) {
+		for (int i = 0; i < mt.length; i++) {
+            for (int j = 0; j < mt[0].length; j++) {
+                        System.out.print(mt[i][j]+" ");
+            }
+            System.out.println();
+	}
+}
 	public static int[][] CongMaTran(int [][] mt1, int [][] mt2){
 	
 		int m,n;
@@ -68,30 +108,18 @@ public class BTMang {
 	public static void main(String[] args) {
 		float []mang = NhapMang();
 		XuatMang(mang);
-		System.out.println("Tong mang S = " + TongMang(mang));
+		System.out.println("\nTong mang S = " + TongMang(mang));
 		float []arr = MinMaxAverage(mang);
 		System.out.println("Min: " + arr[0]);
 		System.out.println("Max: " + arr[1]);
 		System.out.println("Average: " + arr[2]);
 		
-		int[][] matrix1 = {
-		         { 1, 2, 3 },
-		         { 4, 5, 6 },
-		         { 7, 8, 9 }
-		      };
-		int[][] matrix2 = {
-		         { 1, 2, 3 },
-		         { 4, 5, 6 },
-		         { 7, 8, 9 }
-		      };
+		int[][] matrix1 = NhapMaTran();
+		int[][] matrix2 = NhapMaTran();
 		int [][] SMatrix;
 		System.out.println("Tong 2 matran 1 va 2:");
 		SMatrix = CongMaTran(matrix1, matrix2);
-		 for (int i = 0; i < SMatrix.length; i++) {
-             for (int j = 0; j < SMatrix[0].length; j++) {
-                         System.out.print(SMatrix[i][j]+" ");
-             }
-             System.out.println();
+		XuatMaTran(SMatrix);
 	}
-}
+
 }
