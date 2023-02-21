@@ -1,4 +1,3 @@
-package chap02_OOP;
 
 import java.util.Scanner;
 
