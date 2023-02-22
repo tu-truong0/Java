@@ -71,11 +71,18 @@ public static final String lietKeSNT5ChuSo = null;
 		else		
 			return DQ_UCLN(a, b-a);
 	}
-// Bai5	
+
 	static long BCNN(long a, long b) {
 		return a*b/DQ_UCLN(a, b);
 	}
-
+// Bai5	
+	static void lietKeSNTBeHonN(int n) {
+		String s= "";
+		for (int i = 2; i < n; i++) {
+			if (checkSNT(i))	s=s+i+" ";
+		}
+		System.out.println(s);
+	}
 // Bai6
 	static boolean checkSNT(long x) {
 		if (x <= 1)
@@ -124,7 +131,7 @@ public static final String lietKeSNT5ChuSo = null;
 	
 // Bai9
 	static long daoSo(int n) {
-		long s = 1;
+		long s = 0;
 		while (n!=0) {
 			s = s*10 + (n%10);
 			n /= 10;
